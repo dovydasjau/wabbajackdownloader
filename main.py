@@ -2,6 +2,7 @@ import time
 import cv2
 import numpy as np
 import pyautogui
+import keyboard
 
 # Load the button template image
 TEMPLATE_PATH = "button_template.png"
@@ -35,6 +36,9 @@ def find_and_click_button():
 
 # Main loop
 time.sleep(3)  # Give time to switch to the app
-while True:
+print("Press F9 to stop the script.")
+while not keyboard.is_pressed("F9"):
     find_and_click_button()
     time.sleep(8)  # Wait 8 seconds before clicking again
+
+print("Script stopped.")
