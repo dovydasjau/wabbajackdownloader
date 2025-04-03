@@ -34,11 +34,22 @@ def find_and_click_button():
         print("Button not found")
 
 
+# Stop flag
+running = True
+
+
+def stop_script():
+    global running
+    running = False
+    print("Script stopping...")
+
+
+# Register the stop key
+keyboard.add_hotkey("F9", stop_script)
+
 # Main loop
 time.sleep(3)  # Give time to switch to the app
 print("Press F9 to stop the script.")
-while not keyboard.is_pressed("F9"):
+while running:
     find_and_click_button()
     time.sleep(8)  # Wait 8 seconds before clicking again
-
-print("Script stopped.")
